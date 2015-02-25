@@ -30,7 +30,7 @@ def MainMenu():
 			url = url, 
 			title = title, 
 			summary = desc, 
-			thumb = R(ICON)						# Use generic thumb for time being, Feed doesn't give a thumb and site pages don't have suitable image.
+			thumb = R(ICON),						# Use generic thumb for time being, Feed doesn't give a thumb and site pages don't have suitable image.
 			originally_available_at = date
 			)
 		)
