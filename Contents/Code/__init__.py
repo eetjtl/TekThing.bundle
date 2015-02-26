@@ -26,6 +26,8 @@ def MainMenu():
 		url = item.get('link', '')													# Get the link to the video page
 		desc = item.get('description', '')											# Get the episode summary
 		
+		Log('Feed item found: ' + title)
+		
 		oc.add(VideoClipObject(
 			url = url, 
 			title = title, 
