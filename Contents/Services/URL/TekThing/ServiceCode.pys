@@ -22,13 +22,10 @@ def MediaObjectsForURL(url):
     ]
 
 def PlayVideo(url):
- 
-    # Request the URL
-    page = HTML.ElementFromURL(url)
- 
-	# This is currently broken and not finding the url properly.
-    for link in page.xpath("//div[@class='body']//div[@class='sqs-block-content']//a[0]"):
-		Log('The url found via xpath: ' + link)
-		
-		# This finds the full link to the mp4 file
-		return Redirect(link)
+	# Request the URL
+	page = HTML.ElementFromURL(url)
+	
+	# This finds the full link to the mp4 file
+	link = page.xpath("//div[@class='body']//div[@class='sqs-block-content']//a[0]/@href")
+	return Redirect(link)	
+	#return Redirect('http://tekthing.podbean.com/mf/web/wj8d9i/tekthing--0007--raspberry-pi-2-best-mics-for-streaming-power-converting.mp4')
