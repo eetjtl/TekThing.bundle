@@ -25,7 +25,10 @@ def PlayVideo(url):
 	# Request the URL
 	page = HTML.ElementFromURL(url)
 	
-	# This finds the full link to the mp4 file
-	link = page.xpath("//div[@class='body']//div[@class='sqs-block-content']//a[0]/@href")
-	return Redirect(link)	
-	#return Redirect('http://tekthing.podbean.com/mf/web/wj8d9i/tekthing--0007--raspberry-pi-2-best-mics-for-streaming-power-converting.mp4')
+	# This finds the full link to the mp4 file via xpath
+	for link in page.xpath("//div[@class='body']//div[@class='sqs-block-content']//a"):
+		href = link.get('href')
+		Log.Debug('Url: ' + href)
+		
+		if 'mp4' in href:
+			return Redirect(href)
