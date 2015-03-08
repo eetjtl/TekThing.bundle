@@ -14,7 +14,8 @@ YT_END = '?wmode'
 def Start():
 	# Setup the default breadcrumb title for the plugin
 	ObjectContainer.title1 = NAME
-
+	HTTP.CacheTime = CACHE_1HOUR
+	
 # Setup main landing page
 @handler(PREFIX, NAME, thumb=ICON, art=ART)
 def MainMenu():
@@ -23,7 +24,7 @@ def MainMenu():
 
 	for item in xml.xpath('//item'):
 		title = item.xpath('./title/text()')[0]
-		thumb = GetThumbUrl(item)
+		thumb = Resource.ContentsOfURLWithFallback(url=GetThumbUrl(item), fallback=R(ICON))
 		url = GetVideoUrl(item)
 		
 		if url:
