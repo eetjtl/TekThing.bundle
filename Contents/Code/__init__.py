@@ -23,7 +23,10 @@ def MainMenu():
 	xml = XML.ElementFromURL(RSSFEED)
 
 	for item in xml.xpath('//item'):
-		title = item.xpath('./title/text()')[0]
+		try :
+			title = item.xpath('./title/text()')[0]
+		except :
+			pass
 		thumb = Resource.ContentsOfURLWithFallback(url=GetThumbUrl(item), fallback=R(ICON))
 		url = GetVideoUrl(item)
 		
